@@ -1,9 +1,24 @@
+
 [package]
 name = "isit"
 description = "Library for compile time assertions and conditional checks."
 authors = ["ErisianArchitect <https://github.com/ErisianArchitect>"]
-version = "0.1.2"
 edition = "2024"
 documentation = "https://docs.rs/isit/"
 repository = "https://github.com/ErisianArchitect/isit"
 license = "MIT"
+# TODO: Publish isit-macros first, then add the version string.
+publish = false
+# TODO: Bump minor version from 0.1.2 to 0.2.0
+version = "0.1.2"
+
+[workspace]
+members = ["./crates/isit-macros"]
+
+[features]
+default = []
+macros = ["dep:isit-macros"]
+no-std = []
+
+[dependencies]
+isit-macros = { path = "./crates/isit-macros", optional = true }

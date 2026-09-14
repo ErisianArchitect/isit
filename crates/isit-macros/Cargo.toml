@@ -1,0 +1,15 @@
+
+[package]
+name = "isit-macros"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["proc-macro"]
+
+[dependencies]
+syn = "2.0.117"
+proc-macro2 = "1.0.106"
+quote = "1.0.45"
+paste = "1.0.15"
+proc-macro-crate = "3.5.0"

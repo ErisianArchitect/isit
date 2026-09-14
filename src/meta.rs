@@ -1,6 +1,7 @@
 
 #[allow(dead_code)]
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+#[cfg_attr(not(feature = "no-std"), derive(Debug, Hash))]
 pub(crate) enum UninhabitedZst {}
 
 /// A type that occupies niches for 255 slots, and then has a value slot for the 256th discriminant.

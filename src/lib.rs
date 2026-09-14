@@ -1,3 +1,4 @@
+#![cfg_attr(feature = "no-std", no_std)]
 //! `isit` is a compile time checking library. It has a multitude of functions for performing compile time checks to
 //! ensure that your program will work as expected before you ever run it.
 //! 
@@ -508,7 +509,10 @@
 
 mod meta;
 
-use std::{num::NonZero, ptr::NonNull};
+#[cfg(feature = "macros")]
+pub use isit_macros::*;
+
+use core::{num::NonZero, ptr::NonNull};
 use meta::{Niche255, UninhabitedZst};
 
 /// Assert that a condition is `true` at compile time.
