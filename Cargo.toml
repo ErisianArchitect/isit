@@ -10,7 +10,7 @@ license = "MIT"
 # TODO: Publish isit-macros first, then add the version string.
 publish = false
 # TODO: Bump minor version from 0.1.2 to 0.2.0
-version = "0.1.2"
+version = "0.1.3"
 
 [workspace]
 members = ["./crates/isit-macros"]
