@@ -8,7 +8,7 @@ documentation = "https://docs.rs/isit/"
 repository = "https://github.com/ErisianArchitect/isit"
 license = "MIT"
 # TODO: Publish isit-macros first, then add the version string.
-publish = false
+publish = true
 # TODO: Bump minor version from 0.1.2 to 0.2.0
 version = "0.1.3"
 
