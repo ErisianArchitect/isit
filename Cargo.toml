@@ -21,4 +21,4 @@ macros = ["dep:isit-macros"]
 no-std = []
 
 [dependencies]
-isit-macros = { path = "./crates/isit-macros", optional = true }
+isit-macros = { path = "./crates/isit-macros", version = "0.1.1", optional = true }
