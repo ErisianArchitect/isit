@@ -12,7 +12,7 @@
 //!     bar: u64,
 //!     baz: bool,
 //! }
-//! const _: () = isit::const_assert(std::mem::offset_of!(Fred, bar) == 8);
+//! const _: () = isit::const_assert(::core::mem::offset_of!(Fred, bar) == 8);
 //! ```
 //! 
 //! ### `const_assert_all`
@@ -24,10 +24,10 @@
 //!     baz: bool,
 //! }
 //! const _: () = isit::const_assert_all([
-//!     std::mem::size_of::<Fred>() == 24,
-//!     std::mem::offset_of!(Fred, foo) == 0,
-//!     std::mem::offset_of!(Fred, bar) == 8,
-//!     std::mem::offset_of!(Fred, baz) == 16,
+//!     ::core::mem::size_of::<Fred>() == 24,
+//!     ::core::mem::offset_of!(Fred, foo) == 0,
+//!     ::core::mem::offset_of!(Fred, bar) == 8,
+//!     ::core::mem::offset_of!(Fred, baz) == 16,
 //! ]);
 //! ```
 //! 
@@ -41,11 +41,11 @@
 //! }
 //! const _: () = isit::const_assert_any([
 //!     // 64-bit systems
-//!     std::mem::size_of::<Fred>() == 24,
+//!     ::core::mem::size_of::<Fred>() == 24,
 //!     // 32-bit systems
-//!     std::mem::size_of::<Fred>() == 12,
+//!     ::core::mem::size_of::<Fred>() == 12,
 //!     // 16-bit systems
-//!     std::mem::size_of::<Fred>() == 8,
+//!     ::core::mem::size_of::<Fred>() == 8,
 //! ]);
 //! ```
 //! 
@@ -59,9 +59,9 @@
 //! }
 //! const _: () = isit::const_assert_none([
 //!     // align is 8, so none of these will be true.
-//!     std::mem::align_of::<Fred>() == 1,
-//!     std::mem::align_of::<Fred>() == 2,
-//!     std::mem::align_of::<Fred>() == 4,
+//!     ::core::mem::align_of::<Fred>() == 1,
+//!     ::core::mem::align_of::<Fred>() == 2,
+//!     ::core::mem::align_of::<Fred>() == 4,
 //! ]);
 //! ```
 //! 
@@ -281,7 +281,7 @@
 //! 
 //! ### `assert_pointer_size`
 //! ```rust
-//! use std::ptr::NonNull;
+//! use ::core::ptr::NonNull;
 //! #[repr(transparent)]
 //! struct Foo {
 //!     ptr: NonNull<u8>,
@@ -322,7 +322,7 @@
 //! 
 //! ### `assert_pointer_size_align`
 //! ```rust
-//! use std::ptr::NonNull;
+//! use ::core::ptr::NonNull;
 //! /// 
 //! 
 //! #[repr(transparent)]
@@ -357,7 +357,7 @@
 //! 
 //! ### `assert_t_niche`
 //! ```rust
-//! use std::ptr::NonNull;
+//! use ::core::ptr::NonNull;
 //! /// 
 //! 
 //! #[repr(transparent)]
@@ -378,7 +378,7 @@
 //! 
 //! ### `assert_t_niche_compatible`
 //! ```rust
-//! use std::num::NonZero;
+//! use ::core::num::NonZero;
 //! #[repr(transparent)]
 //! struct Foo(NonZero<u8>);
 //! const _: () = isit::assert_t_niche_compatible::<Foo, NonZero<u8>>();
@@ -387,7 +387,7 @@
 //! 
 //! ### `assert_niche`
 //! ```rust
-//! use std::ptr::NonNull;
+//! use ::core::ptr::NonNull;
 //! /// 
 //! 
 //! #[repr(transparent)]
@@ -404,7 +404,7 @@
 //! 
 //! ### `assert_single_niche`
 //! ```rust
-//! use std::ptr::NonNull;
+//! use ::core::ptr::NonNull;
 //! /// 
 //! 
 //! #[repr(transparent)]
@@ -413,7 +413,7 @@
 //! ```
 //! ### `assert_pointer_niche`
 //! ```rust
-//! use std::ptr::NonNull;
+//! use ::core::ptr::NonNull;
 //! /// 
 //! 
 //! #[repr(transparent)]
@@ -430,7 +430,7 @@
 //! 
 //! ### `assert_pointer_niche_compatible`
 //! ```rust
-//! use std::num::NonZero;
+//! use ::core::num::NonZero;
 //! #[repr(transparent)]
 //! struct Foo(NonZero<u128>);
 //! const _: () = isit::assert_pointer_niche_compatible::<Foo>();
@@ -525,7 +525,7 @@ use meta::{Niche255, UninhabitedZst};
 ///     bar: u64,
 ///     baz: bool,
 /// }
-/// const _: () = isit::const_assert(std::mem::offset_of!(Fred, bar) == 8);
+/// const _: () = isit::const_assert(::core::mem::offset_of!(Fred, bar) == 8);
 /// ```
 #[track_caller]
 #[inline(always)]
@@ -557,10 +557,10 @@ pub const fn all_condition<const SIZE: usize>(conditions: [bool; SIZE]) -> bool 
 ///     baz: bool,
 /// }
 /// const _: () = isit::const_assert_all([
-///     std::mem::size_of::<Fred>() == 24,
-///     std::mem::offset_of!(Fred, foo) == 0,
-///     std::mem::offset_of!(Fred, bar) == 8,
-///     std::mem::offset_of!(Fred, baz) == 16,
+///     ::core::mem::size_of::<Fred>() == 24,
+///     ::core::mem::offset_of!(Fred, foo) == 0,
+///     ::core::mem::offset_of!(Fred, bar) == 8,
+///     ::core::mem::offset_of!(Fred, baz) == 16,
 /// ]);
 /// ```
 #[track_caller]
@@ -597,11 +597,11 @@ pub const fn any_condition<const SIZE: usize>(conditions: [bool; SIZE]) -> bool 
 /// }
 /// const _: () = isit::const_assert_any([
 ///     // 64-bit systems
-///     std::mem::size_of::<Fred>() == 24,
+///     ::core::mem::size_of::<Fred>() == 24,
 ///     // 32-bit systems
-///     std::mem::size_of::<Fred>() == 12,
+///     ::core::mem::size_of::<Fred>() == 12,
 ///     // 16-bit systems
-///     std::mem::size_of::<Fred>() == 8,
+///     ::core::mem::size_of::<Fred>() == 8,
 /// ]);
 /// ```
 #[track_caller]
@@ -639,9 +639,9 @@ pub const fn none_condition<const SIZE: usize>(conditions: [bool; SIZE]) -> bool
 /// }
 /// const _: () = isit::const_assert_none([
 ///     // align is 8, so none of these will be true.
-///     std::mem::align_of::<Fred>() == 1,
-///     std::mem::align_of::<Fred>() == 2,
-///     std::mem::align_of::<Fred>() == 4,
+///     ::core::mem::align_of::<Fred>() == 1,
+///     ::core::mem::align_of::<Fred>() == 2,
+///     ::core::mem::align_of::<Fred>() == 4,
 /// ]);
 /// ```
 #[track_caller]
@@ -1220,7 +1220,7 @@ pub const fn pointer_size_condition<T>() -> bool {
 /// 
 /// # Usage
 /// ```rust
-/// use std::ptr::NonNull;
+/// use ::core::ptr::NonNull;
 /// #[repr(transparent)]
 /// struct Foo {
 ///     ptr: NonNull<u8>,
@@ -1331,7 +1331,7 @@ pub const fn pointer_size_align_condition<T>() -> bool {
 /// 
 /// # Usage
 /// ```rust
-/// use std::ptr::NonNull;
+/// use ::core::ptr::NonNull;
 /// 
 /// #[repr(transparent)]
 /// struct Foo(NonNull<Foo>);
@@ -1429,7 +1429,7 @@ pub const fn t_niche_condition<T, Niched>() -> bool {
 /// 
 /// # Usage
 /// ```rust
-/// use std::ptr::NonNull;
+/// use ::core::ptr::NonNull;
 /// 
 /// #[repr(transparent)]
 /// struct Foo {
@@ -1479,7 +1479,7 @@ pub const fn t_niche_compatible_condition<T, Niched>() -> bool {
 /// 
 /// # Usage
 /// ```rust
-/// use std::num::NonZero;
+/// use ::core::num::NonZero;
 /// #[repr(transparent)]
 /// struct Foo(NonZero<u8>);
 /// const _: () = isit::assert_t_niche_compatible::<Foo, NonZero<u8>>();
@@ -1503,7 +1503,7 @@ pub const fn niche_condition<T>() -> bool {
 /// 
 /// # Usage
 /// ```rust
-/// use std::ptr::NonNull;
+/// use ::core::ptr::NonNull;
 /// 
 /// #[repr(transparent)]
 /// struct Foo(NonNull<Foo>);
@@ -1549,7 +1549,7 @@ pub const fn single_niche_condition<T>() -> bool {
 /// 
 /// # Usage
 /// ```rust
-/// use std::ptr::NonNull;
+/// use ::core::ptr::NonNull;
 /// 
 /// #[repr(transparent)]
 /// struct Foo(NonNull<Foo>);
@@ -1569,7 +1569,7 @@ pub const fn assert_single_niche<T>() {
         (false, false) => panic!("Both doesn't have a niche and has two niches. Somehow."),
     }
 }
-const _: () = assert_single_niche::<std::num::NonZero<u64>>();
+const _: () = assert_single_niche::<::core::num::NonZero<u64>>();
 
 
 /// Check that `Option<T>` has the same size and alignment as a pointer at compile time.
@@ -1583,7 +1583,7 @@ pub const fn pointer_niche_condition<T>() -> bool {
 /// 
 /// # Usage
 /// ```rust
-/// use std::ptr::NonNull;
+/// use ::core::ptr::NonNull;
 /// 
 /// #[repr(transparent)]
 /// struct Foo(NonNull<Foo>);
@@ -1629,7 +1629,7 @@ pub const fn pointer_niche_compatible_condition<T>() -> bool {
 /// 
 /// # Usage
 /// ```rust
-/// use std::num::NonZero;
+/// use ::core::num::NonZero;
 /// #[repr(transparent)]
 /// struct Foo(NonZero<u128>);
 /// const _: () = isit::assert_pointer_niche_compatible::<Foo>();
