@@ -2,7 +2,12 @@
 [package]
 name = "isit-macros"
 version = "0.1.1"
+description = "Library for compile time assertions and conditional checks."
+authors = ["ErisianArchitect <https://github.com/ErisianArchitect>"]
 edition = "2024"
+documentation = "https://docs.rs/isit/"
+repository = "https://github.com/ErisianArchitect/isit"
+license = "MIT"
 
 [lib]
 proc-macro = true
